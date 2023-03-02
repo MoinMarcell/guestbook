@@ -2,7 +2,13 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {GuestbookEntry} from "./GuestbookEntry";
 import axios from "axios";
 
-export default function AddEntry() {
+type AddEntryProps = {
+    token: string | null,
+}
+
+export default function AddEntry(props: AddEntryProps) {
+
+    console.log("token in add: " + props.token)
 
     const [entry, setEntry] = useState<GuestbookEntry>({
         title: "",
@@ -22,7 +28,11 @@ export default function AddEntry() {
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        axios.post("/api/guestbook-entries", entry)
+        axios.post("/api/guestbook-entries", entry, {
+            headers: {
+                "Authorization": "Bearer " + props.token
+            }
+        })
             .then(() => {
                 console.log("Success!");
                 setIsUnauthorized(false);
