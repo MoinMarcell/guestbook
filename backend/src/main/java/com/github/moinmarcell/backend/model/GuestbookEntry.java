@@ -3,7 +3,7 @@ package com.github.moinmarcell.backend.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.ZonedDateTime;
+import java.time.Instant;
 
 @Document
 public record GuestbookEntry(
@@ -11,7 +11,7 @@ public record GuestbookEntry(
         String id,
         String title,
         String content,
-        ZonedDateTime dateTime,
+        Instant dateTime,
         String author
 ) {
 }
