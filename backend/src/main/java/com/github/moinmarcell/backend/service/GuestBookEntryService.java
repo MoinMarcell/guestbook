@@ -4,7 +4,7 @@ import com.github.moinmarcell.backend.model.GuestbookEntry;
 import com.github.moinmarcell.backend.repository.GuestbookEntryRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.ZonedDateTime;
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -27,7 +27,7 @@ public class GuestBookEntryService {
                 idService.generateId(),
                 guestbookEntryToAdd.title(),
                 guestbookEntryToAdd.content(),
-                ZonedDateTime.now(),
+                Instant.now(),
                 guestbookEntryToAdd.author()
         );
         guestbookEntryRepository.save(toAdd);
