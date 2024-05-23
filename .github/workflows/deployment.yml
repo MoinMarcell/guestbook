@@ -82,7 +82,7 @@ jobs:
     needs: push-to-docker-hub
     environment:
       name: Guestbook
-      url: https://fullstack-v15z.onrender.com
+      url: https://guestbook-latest.onrender.com
     steps:
       - name: Trigger Render.com Deployment
         id: trigger-deploy
